@@ -2,7 +2,6 @@ package day9
 
 import (
 	"fmt"
-	"slices"
 	"strconv"
 
 	reader "github.com/luigigil/aoc2024/utils"
@@ -18,8 +17,6 @@ func Part2() {
 
 	ids := 0
 	memory := []int{}
-	spacesSize := make(map[int]int)
-	spacesPosition := []int{}
 	filesSize := make(map[int]int)
 	filesPosition := make(map[int]int)
 	for i, v := range input {
@@ -34,8 +31,6 @@ func Part2() {
 			ids += 1
 		} else {
 			// free space
-			spacesSize[len(memory)] = val
-			spacesPosition = append(spacesPosition, len(memory))
 			for j := 0; j < val; j++ {
 				memory = append(memory, -1)
 			}
@@ -43,40 +38,35 @@ func Part2() {
 	}
 
 	maxId := ids - 1
-	filesMoved := make(map[int]bool)
-	iSpace := 0
-	for {
-		if iSpace == len(spacesPosition) {
-			break
-		}
-		pos := spacesPosition[iSpace]
-		value := spacesSize[pos]
 
-		iSpace += 1
-
-		for id := maxId; id >= 0; id-- {
-			if filesMoved[id] {
+	for id := maxId; id >= 0; id-- {
+		init := 0
+		end := 0
+		for init = 0; init < len(memory); init++ {
+			if memory[init] != -1 {
 				continue
 			}
-			if filesSize[id] > value {
+
+			for end = init; end < len(memory); end++ {
+				if memory[end] != -1 {
+					break
+				}
+			}
+
+			freeSize := end - init
+
+			if filesPosition[id] <= init {
+				break
+			}
+
+			if filesSize[id] > freeSize {
 				continue
 			}
-			filesMoved[id] = true
 
-			for i := 0; i < filesSize[id]; i++ {
-				memory[pos+i] = id
-				memory[filesPosition[id]+i] = -1
+			for k := 0; k < filesSize[id]; k++ {
+				memory[init+k] = id
+				memory[filesPosition[id]+k] = -1
 			}
-
-			if filesSize[id] != value {
-				spacesPosition = append(spacesPosition, pos+filesSize[id])
-				spacesSize[pos+filesSize[id]] = value - filesSize[id]
-			}
-
-			spacesPosition = spacesPosition[1:]
-			slices.Sort(spacesPosition)
-
-			iSpace = 0
 			break
 		}
 	}

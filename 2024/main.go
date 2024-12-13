@@ -9,8 +9,9 @@ import (
 	// "github.com/luigigil/aoc2024/day6"
 	// "github.com/luigigil/aoc2024/day7"
 	// "github.com/luigigil/aoc2024/day8"
-	// "github.com/luigigil/aoc2024/day9"
-	"github.com/luigigil/aoc2024/day10"
+	"github.com/luigigil/aoc2024/day9"
+	// "github.com/luigigil/aoc2024/day10"
+	// "github.com/luigigil/aoc2024/day11"
 )
 
 func main() {
@@ -39,8 +40,11 @@ func main() {
 	// day8.Part2()
 
 	// day9.Part1()
-	// day9.Part2()
+	day9.Part2()
 
 	// day10.Part1()
-	day10.Part2()
+	// day10.Part2()
+
+	// day11.Part1()
+	// day11.Part2()
 }
