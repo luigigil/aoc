@@ -6,7 +6,7 @@ import (
 )
 
 func Part2() {
-	s := reader.GetScanner("day15/input.txt")
+	s := reader.GetScanner("day15/input.in")
 
 	ans := 0
 	input := make([][]byte, 0)
@@ -221,7 +221,7 @@ func Part2() {
 }
 
 func Part1() {
-	s := reader.GetScanner("day15/input.txt")
+	s := reader.GetScanner("day15/input.in")
 
 	ans := 0
 	input := make([][]byte, 0)
