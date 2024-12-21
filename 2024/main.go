@@ -15,7 +15,8 @@ import (
 	// "github.com/luigigil/aoc2024/day12"
 	// "github.com/luigigil/aoc2024/day13"
 	// "github.com/luigigil/aoc2024/day14"
-	"github.com/luigigil/aoc2024/day15"
+	// "github.com/luigigil/aoc2024/day15"
+	"github.com/luigigil/aoc2024/day16"
 )
 
 func main() {
@@ -62,5 +63,8 @@ func main() {
 	// day14.Part2()
 
 	// day15.Part1()
-	day15.Part2()
+	// day15.Part2()
+
+	day16.Part1()
+	// day15.Part2()
 }
